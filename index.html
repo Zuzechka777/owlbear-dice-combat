@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dice & Combat Tracker</title>
+<link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div id="app">
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="dice">🎲 Dice</button>
+      <button class="tab-btn" data-tab="combat">⚔️ Combat</button>
+    </div>
+
+    <!-- DICE TAB -->
+    <section id="tab-dice" class="tab-panel active">
+      <div class="dice-grid">
+        <button class="die-btn" data-die="4">d4</button>
+        <button class="die-btn" data-die="6">d6</button>
+        <button class="die-btn" data-die="8">d8</button>
+        <button class="die-btn" data-die="10">d10</button>
+        <button class="die-btn" data-die="12">d12</button>
+        <button class="die-btn" data-die="20">d20</button>
+        <button class="die-btn" data-die="100">d100</button>
+      </div>
+
+      <div class="row">
+        <label>Modifier
+          <input type="number" id="quick-mod" value="0" />
+        </label>
+      </div>
+
+      <div class="row">
+        <input type="text" id="custom-notation" placeholder="e.g. 2d6+3" />
+        <button id="custom-roll-btn">Roll</button>
+      </div>
+
+      <h3>Roll log</h3>
+      <div id="roll-log" class="log"></div>
+    </section>
+
+    <!-- COMBAT TAB -->
+    <section id="tab-combat" class="tab-panel">
+      <div class="row space-between">
+        <strong>Tokens on the map</strong>
+        <button id="refresh-tokens-btn" title="Refresh">⟳</button>
+      </div>
+      <div id="token-list" class="token-list">
+        <p class="hint">Open a scene with tokens on the <em>Character</em> layer to see them here.</p>
+      </div>
+
+      <div id="target-panel" class="target-panel hidden">
+        <h3>Target: <span id="target-name">-</span></h3>
+
+        <div class="row">
+          <label>Attack bonus
+            <input type="number" id="attack-mod" value="0" />
+          </label>
+          <button id="roll-attack-btn">Roll Attack</button>
+        </div>
+        <div id="attack-result" class="result"></div>
+
+        <div class="row">
+          <label>Damage
+            <input type="text" id="damage-notation" placeholder="e.g. 1d8+3" />
+          </label>
+          <button id="roll-damage-btn" disabled>Roll Damage & Apply</button>
+        </div>
+
+        <div class="row">
+          <label>Healing
+            <input type="text" id="heal-notation" placeholder="e.g. 2d4+2" />
+          </label>
+          <button id="roll-heal-btn">Roll Healing & Apply</button>
+        </div>
+
+        <div class="row">
+          <label>Manual HP adjust
+            <input type="number" id="manual-hp" placeholder="±HP" />
+          </label>
+          <button id="manual-hp-btn">Apply</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
